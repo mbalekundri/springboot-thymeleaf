@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href = "@{/css/bootstrap.min.css}" rel="stylesheet">
+    <title>Iteration example</title>
+</head>
+<body>
+<div class="container">
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Emp Name</th>
+            <th>Emp Age</th>
+            <th>Emp Phone</th>
+            <th>Total records</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee : ${employeesData}"
+            th:style="${employeeStat.first}?'background-color: yellow':'background-color: blue'"
+            th:alt-title="${employeeStat.even}?'even':'odd'">
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.age}"></td>
+            <td th:text="${employee.phone}"></td>
+            <td th:text="${employeeStat.size}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

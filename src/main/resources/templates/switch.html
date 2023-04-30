@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link th:href = "@{/css/bootstrap.min.css}" rel="stylesheet">
+  <title>If-Unless</title>
+</head>
+<body>
+<div class="container">
+  <h1>Switch demo</h1>
+  <table border="1">
+    <thead>
+    <tr>
+      <th>User Name</th>
+      <th>User Phone</th>
+      <th>User Role</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${usersData}">
+      <td th:text="${user.username}"></td>
+      <td th:text="${user.phone}"></td>
+      <td th:text="${user.role}"></td>
+      <td>
+        <div th:switch="${user.role}">
+          <p th:case="'ADMIN'">User is Admin</p>
+          <p th:case="'MANAGER'">User is Manager</p>
+          <p th:case="*">User is guest</p>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
