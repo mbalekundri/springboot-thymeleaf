@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-@Builder
+@Builder(builderClassName = "Builder")
 public class User {
     private String username;
     private String role;

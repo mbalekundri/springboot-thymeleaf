@@ -1,12 +1,18 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:mydb
+    url: jdbc:h2:mem:mydb?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
     # url: jdbc:h2:file:/data/demo
     username: sa
     password: sa
     driverClassName: org.h2.Driver
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update # Hibernate ddl auto (create, create-drop, validate, update)
 logging:
   level:
     web: DEBUG
+#    org.hibernate:
+#      hibernate:
+#        SQL: DEBUG
+#        type: TRACE

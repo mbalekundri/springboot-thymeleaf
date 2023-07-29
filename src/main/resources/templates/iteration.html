@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link th:href = "@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css} "/>
     <title>Iteration example</title>
 </head>
 <body>
@@ -10,18 +10,24 @@
     <table border="1">
         <thead>
         <tr>
-            <th>Emp Name</th>
+            <th>Emp First name</th>
+            <th>Emp Last name</th>
             <th>Emp Age</th>
+            <th>Emp Email</th>
             <th>Emp Phone</th>
             <th>Total records</th>
         </tr>
         </thead>
         <tbody>
+        <!--  th:style="${employeeStat.first}?'background-color:yellow':${employeeStat.last?'background-color:red':'background-color:blue'}" -->
+        <!-- th:style="${employeeStat.first}?'background-color:yellow':'background-color:blue'" -->
         <tr th:each="employee : ${employeesData}"
-            th:style="${employeeStat.first}?'background-color: yellow':'background-color: blue'"
+            th:style="${employeeStat.first}?'background-color:yellow':${employeeStat.last?'background-color:red':'background-color:blue'}"
             th:alt-title="${employeeStat.even}?'even':'odd'">
-            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.firstName}"></td>
+            <td th:text="${employee.lastName}"></td>
             <td th:text="${employee.age}"></td>
+            <td th:text="${employee.email}"></td>
             <td th:text="${employee.phone}"></td>
             <td th:text="${employeeStat.size}"></td>
         </tr>

@@ -5,6 +5,7 @@ import com.thymeleaf.api.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +14,11 @@ import java.util.List;
 public class HelloWorldController {
 
     @GetMapping("/hello")
-    public String hello(Model model) {
-        model.addAttribute("message", "Hello world");
-        return "helloworld";
+    public ModelAndView hello(ModelAndView modelAndView) {
+        modelAndView.addObject("message", "Hello world");
+        modelAndView.getModelMap().addAttribute("test", "test");
+        modelAndView.setViewName("helloworld");
+        return modelAndView;
     }
 
     @GetMapping("/style")
@@ -31,9 +34,10 @@ public class HelloWorldController {
     @GetMapping("/iteration")
     public String iteration(Model model) {
         List<Employee> employees = new ArrayList<>();
-        employees.add(Employee.builder().name("Rohit").age(43).phone("9740911665").build());
-        employees.add(Employee.builder().name("Ratika").age(33).phone("9740911665").build());
-        employees.add(Employee.builder().name("Rashmika").age(3).phone("9740911665").build());
+        employees.add(Employee.builder().firstName("Rohit").lastName("Balekundri").age(43).email("balekundri@gmail.com").phone("9740911665").build());
+        employees.add(Employee.builder().firstName("Ratika").lastName("Balekundri").age(33).email("balekundri@gmail.com").phone("9740911665").build());
+        employees.add(Employee.builder().firstName("Ganesh").lastName("Balekundri").age(11).email("balekundri@gmail.com").phone("9740911665").build());
+        employees.add(Employee.builder().firstName("Rashmika").lastName("Balekundri").age(4).email("balekundri@gmail.com").phone("9740911665").build());
         model.addAttribute("employeesData", employees);
         return "iteration";
     }
